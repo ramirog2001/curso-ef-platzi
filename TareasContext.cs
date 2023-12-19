@@ -21,7 +21,7 @@ public class TareasContext : DbContext
         modelBuilder.Entity<Tarea>(tarea =>
         {
             tarea.ToTable("Tarea");
-            tarea.HasKey(t => t.TareaID);
+            tarea.HasKey(t => t.TareaId);
             tarea.HasOne(t => t.Categoria).WithMany(c => c.Tareas).HasForeignKey(t => t.CategoriaId);
             tarea.Property(t => t.Titulo).IsRequired().HasMaxLength(200);
             tarea.Ignore(t => t.Resumen);
