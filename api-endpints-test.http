@@ -1,0 +1,16 @@
+### Send POST request with body as parameters
+POST http://localhost:5219/api/tareas
+Content-Type: application/json
+
+{
+    "CategoriaId" : "771fe61e-10b0-4174-8e42-bf5296b5e749",
+    "Titulo" : "test",
+    "Descripcion" : "test",
+    "PrioridadTarea" : 1
+}
+
+### Get all Tareas
+
+GET http://localhost:5219/api/tareas
+
+###
