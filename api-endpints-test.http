@@ -13,4 +13,14 @@ Content-Type: application/json
 
 GET http://localhost:5219/api/tareas
 
-###
+### Edit Tareas
+
+PUT http://localhost:5219/api/tareas/a1d39cce-fdd0-4960-a6c9-6e347c948010
+Content-Type: application/json
+
+{
+  "CategoriaId" : "771fe61e-10b0-4174-8e42-bf5296b5e749",
+  "Titulo" : "testChanged",
+  "Descripcion" : "changedTest",
+  "PrioridadTarea" : 1
+}
