@@ -24,3 +24,7 @@ Content-Type: application/json
   "Descripcion" : "changedTest",
   "PrioridadTarea" : 1
 }
+
+### Delete Tareas
+
+DELETE http://localhost:5219/api/tareas/a1d39cce-fdd0-4960-a6c9-6e347c948010

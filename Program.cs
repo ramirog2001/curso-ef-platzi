@@ -37,7 +37,7 @@ app.MapPut("/api/tareas/{idTarea}",
         var tareaOld = dbContext.Tareas.Find(idTarea);
         
         if (tareaOld is null)
-            return Results.BadRequest("No se encontro una tarea con el id requerido");
+            return Results.NotFound("No se encontro una tarea con el id requerido");
 
         tarea.TareaId = tareaOld.TareaId;
         tarea.FechaCreacion = tareaOld.FechaCreacion;
@@ -51,6 +51,20 @@ app.MapPut("/api/tareas/{idTarea}",
         var rowsChanged = await dbContext.SaveChangesAsync();
 
         return Results.Ok($"Se han cambiado {rowsChanged} filas");
-    });
+});
+
+app.MapDelete("/api/tareas/{idTarea}", async ([FromServices] TareasContext dbContext, [FromRoute] Guid idTarea) =>
+{
+    var tareaAEliminar = dbContext.Tareas.Find(idTarea);
+
+    if (tareaAEliminar is null)
+        return Results.NotFound("No se ha encontrado una tarea con el id requerido");
+    
+    dbContext.Remove(tareaAEliminar);
+
+    var rowsChanged = await dbContext.SaveChangesAsync();
+
+    return Results.Ok($"Se han cambiado {rowsChanged} filas");
+});
 
 app.Run();
